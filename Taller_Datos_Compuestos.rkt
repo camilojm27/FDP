@@ -12,14 +12,14 @@
 (define-struct persona (nombre email fecha))
 
 
-(define persona1 (make-persona (make-nombre "Santiago" "Martinez" "Mesa") "Santiago@gmail.com" (make-fecha 9 8 2000)))
+(define persona1 (make-persona (make-nombre "Santiago" "Martinez" "Mesa") "Santiago@gmail.com" (make-fecha 9 8 2001)))
 
 ;;PUNTO 2;;
 
-(define persona2 (make-persona (make-nombre "Camilo" "Mezu" "Castañeda") "Camilo@gmail.com" (make-fecha 8 5 1998)))
+(define persona2 (make-persona (make-nombre "Camilo" "Mezu" "Mina") "Camilo@gmail.com" (make-fecha 8 5 1998)))
 (define persona3 (make-persona (make-nombre "Pablo" "Marin" "Rodriguez") "Pablo@gmail.com" (make-fecha 15 09 1999)))
 (define persona4 (make-persona (make-nombre "Elver" "Andres" "Galarga") "Elver@gmail.com" (make-fecha 5 6 1995)))
-
+(define persona5 (make-persona (make-nombre "Faruck" "Mezu" "Mina") "faruckmezu@gmail.com" (make-fecha 5 6 1995)))
 ;;PUNTO 3;;
 
 (define-struct fechaReferencia (dia mes año))
@@ -33,3 +33,18 @@
 (esMayor? persona1)
 
 ;PUNTO 4;;
+;PUNTO 5;
+
+(define (sonParientes? p1 p2)
+  (cond
+    [(string=? (nombre-apellido1(persona-nombre p1)) (nombre-apellido1(persona-nombre p2))) "Son parientes"]
+    [(string=? (nombre-apellido2(persona-nombre p1)) (nombre-apellido2(persona-nombre p2))) "Son parientes"]
+
+    [(string=? (nombre-apellido1(persona-nombre p1)) (nombre-apellido2(persona-nombre p2))) "Son parientes"]
+    [(string=? (nombre-apellido2(persona-nombre p1)) (nombre-apellido1(persona-nombre p2))) "Son parientes"]
+
+    [else "No son parientes"]
+    
+
+  ))
+(sonParientes? persona2 persona5)
