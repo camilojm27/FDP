@@ -67,3 +67,24 @@
 
 (define-struct rects (rec1 rec2 rec3))
 (make-rects rec1 rec2 rec3)
+
+;PUNTO 10;;
+#lang racket
+(define-struct point2d (x y) #:transparent)
+
+(define point2d1 (make-point2d 5 6))
+(define point2d2 (make-point2d 2 3))
+(define point2d3 (make-point2d 4 5))
+(define point2d4 (make-point2d 10 12))
+
+(define-struct rect (x1 x2 y1 y2))
+
+(define rect1 (make-rect 1 6 3 7))
+
+(define (interv a)
+  (cond
+    [(and (>= (point2d-x a) 1) (<= (point2d-x a) 6))
+          (and (>= (point2d-y a) 3) (<= (point2d-y a) 7))"esta dentro"]
+    (else "esta fuera")))
+
+(interv point2d4)
