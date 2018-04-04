@@ -45,3 +45,25 @@
 
   ))
 (sonParientes? persona2 persona5)
+
+;PUNTO 6;;
+
+(define-struct point2d (x y))
+
+(define g (make-point2d 2 3))
+(define h (make-point2d 4 6))
+(define i (make-point2d 1 2))
+
+(define-struct points (g h i))
+(make-points g h i)
+
+;PUNTO 7;;
+
+(define-struct rect (g h))
+
+(define rec1 (make-rect g h))
+(define rec2 (make-rect i h))
+(define rec3 (make-rect g i))
+
+(define-struct rects (rec1 rec2 rec3))
+(make-rects rec1 rec2 rec3)
