@@ -1,3 +1,6 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-reader.ss" "lang")((modname Taller_Listas_DatosCompuestos2) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 ;;TALLER #3;;
 
 ;;PUNTO 1;;
@@ -62,4 +65,27 @@
 
 (check-expect (listaFib 5) (list 0 1 1 2 3 5))
 (check-expect (listaFib 8) (list 0 1 1 2 3 5 8 13 21))
+
+;;PUNTO 8
+;implementar una función que retorna el índice n de
+;dónde se encuentra un número x dado, si existe, o -(n + 1 ), donde n es la
+;posición en la cual se debería insertar x para mantener la lista ordenada
+
+(define z (list 3 5 7))
+
+(define (findn l x) (findx l x 0))
+
+(define (findx l x n) (cond
+[(empty? l) (- -1 n)]
+[(< x (first l)) (- -1 n)]
+[(= x (first l)) n]
+[else (findx (rest l) x(+ n 1))]))
+
+;PRUEBAS
+(check-expect (findn z 1)-1)
+(check-expect (findn z 3)0)
+(check-expect (findn z 5)1)
+(check-expect (findn z 7)2)
+(check-expect (findn z 6)-3)
+(check-expect (findn z 8)-4)
 
