@@ -1,5 +1,3 @@
-TALLER 3 (LISTAS)
-
 ;;TALLER #3;;
 
 ;;PUNTO 1;;
@@ -7,19 +5,28 @@ TALLER 3 (LISTAS)
 ;;maxVal(lista) -> number
 ;;PRUEBAS: (2 5 4 3 0 1) -> 5
 
-(define a (list 2 5 4 3 0 1))
+(define lista1.1 (list 2 5 4 3 0 1))
+(define lista1.2 (list 2 5 4 3 0 8))
+(define lista1.3 (list 2 5 4 3 0 9))
+
 (define (maxVal a)
   (if (empty? (rest a)) (first a)
       (max (first a) (maxVal (rest a)))))
 
-(check-expect (maxVal a) 5)
+;;PRUEBAS;;
+(check-expect (maxVal lista1.1) 5)
+(check-expect (maxVal lista1.2) 8)
+(check-expect (maxVal lista1.3) 9)
 
 ;;PUNTO 2;;
 ;;Encontrar el mayor promedio de una lista de datos;;
 ;;media(lista) -> number
 ;;PRUEBAS: (2 5 4 3 0 1) -> 2.5
 
-(define lista (list 2 5 4 3 0 1))
+;(define lista1.1 (list 2 5 4 3 0 1))
+;(define lista1.2 (list 2 5 4 3 0 8))
+;(define lista1.3 (list 2 5 4 3 0 9))
+
 
 (define (size a)
   (if(empty? a) 0 (+ 1 (size (rest a)))))
@@ -31,19 +38,28 @@ TALLER 3 (LISTAS)
 (define (media a)
  (/ (sum a) (size a)))
 
-(check-expect (media a) 2.5)
+;;PRUEBAS;;
+(check-expect (media lista1.1) 2.5)
+(check-expect (media lista1.2) 3.6)
+(check-expect (media lista1.3) 3.83)
 
 ;;PUNTO 3;;
 ;;Invierte el orden de una lista;;
 ;;invert(lista) -> lista
 ;;PRUEBAS: (2 5 4 3 0 1) -> 1 0 3 4 5 2
 
+;(define lista1.1 (list 2 5 4 3 0 1))
+;(define lista1.2 (list 2 5 4 3 0 8))
+;(define lista1.3 (list 2 5 4 3 0 9))
+
 (define (invert a)
   (if (empty? a) a
       (append (invert (rest a)) (list(first a)))))
 
-(check-expect (invert a)
-              (cons 1 (cons 0 (cons 3 (cons 4 (cons 5 (cons 2 '())))))) )
+;;PRUEBAS;;
+(check-expect (invert lista1.1)(list 1 0 3 4 5 2))
+(check-expect (invert lista1.2)(list 8 0 3 4 5 2))
+(check-expect (invert lista1.3)(list 9 0 3 4 5 2))
 
 ;PUNTO 4;; 
 ;;Ordena de manera ascendente una lista;;
@@ -52,7 +68,7 @@ TALLER 3 (LISTAS)
 ;;PUNTO 5;;
 ;;Genera una lista de los primeros 5 digitos de la serie fibonacchi;;
 ;;fibList (number) -> lista
-;;PRUEBAS:
+;;PRUEBAS: (listaFib 7) -> (list 13 8 5 3 2 1 1 0)
 
 (define (fib n)
   (cond
@@ -64,20 +80,20 @@ TALLER 3 (LISTAS)
   (if (= n 0) (list 0)
   (append (list (fib n)) (listaFib (- n 1)) )))
 
-(listaFib 7)
+;;PRUEBAS;;
+(check-expect (listaFib 3)(list 2 1 1 0))
+(check-expect (listaFib 4)(list 3 2 1 1 0))
+(check-expect (listaFib 5)(list 5 3 2 1 1 0)) 
 
 ;;PUNTO 6;;
 ;;Elimina todo aquel item que no sea un numero de una lista;;
 ;;suprNumb (lista)-> lista;;
 ;;EJEMPLO: suprNumb (list 1 'a 2 'b) -> (list 1 2)
 
-(define lista1 (list 1 'a 2 'b))
-
-(define lista2 (list 'a 1 'b 2))
-
-(define lista3 (list 1 2 'a 'b 'c))
-
-(define lista4 (list 'a 'b 1 2 3))
+(define lista1.4 (list 1 'a 2 'b))
+(define lista1.5 (list 'a 1 'b 2))
+(define lista1.6 (list 1 2 'a 'b 'c))
+(define lista1.7 (list 'a 'b 1 2 3))
 
 (define (suprNumb a)
   (cond
@@ -85,14 +101,21 @@ TALLER 3 (LISTAS)
     [(number? (first a)) (cons (first a) (suprNumb (cdr a)))]
     [(not(number? (first a))) (suprNumb (cdr a))]))
 
-(supr lista4)
+;;PRUEBAS;;
+(check-expect (suprNumb lista1.4)(list 1 2))
+(check-expect (suprNumb lista1.5)(list 1 2))
+(check-expect (suprNumb lista1.6)(list 1 2))
+(check-expect (suprNumb lista1.7)(list 1 2 3))
+
 
 ;;PUNTO 7;;
 ;;Inserta un item x en la posicion n de una lista;;
 ;;insert (x lista n) -> lista
 ;;EJEMPLO: insert (1 lista1 0), si lista1 = (2 3 4 5); -> (1 2 3 4 5)
 
-(define lista1 (list 1 3 4 5 6))
+(define lista1.8 (list 1 3 4 5 6))
+(define lista1.9 (list 2 4 5 6 ))
+(define lista1.10 (list 3 4 6 7 8))
 
 (define (insert x lista n)
   (cond [(> n (length lista)) lista]
@@ -100,11 +123,15 @@ TALLER 3 (LISTAS)
         [(= n 1) (append (list (first lista)) (list x) (cdr lista))]
         [else (append (list (first lista)) (insert x (cdr lista) (- n 1)))]))
 
-(insert 2 lista1 1)
+
+;;PRUEBAS;;
+(check-expect (insert 2 lista1.8 1)(list 1 2 3 4 5 6))
+(check-expect (insert 1 lista1.9 0)(list 1 2 4 5 6))
+(check-expect (insert 5 lista1.10 2)(list 3 4 5 6 7 8))
 
 ;;PUNTO 8;;
 ;;retorna el índice n de dónde se encuentra un número x dado, donde n es la
-posición en la cual se debería insertar x para mantener la lista ordenada;;
+;;posición en la cual se debería insertar x para mantener la lista ordenada;;
 ;;findx (lista number) -> number
 
 (define lista1 (list 3 5 7))
@@ -140,36 +167,36 @@ posición en la cual se debería insertar x para mantener la lista ordenada;;
         [(> n (first (reverse lista))) (append lista (list n))]
         [else (append (list(first lista)) (orderIns n (cdr lista)))]))
 
-(orderIns 1 lista2)
-(orderIns 3 lista2)
-(orderIns 5 lista2)
-(orderIns 7 lista2)
-(orderIns 9 lista2)
+;;PRUEBAS;;
+(check-expect (orderIns 1 lista2)(list 1 2 4 6 8))
+(check-expect (orderIns 3 lista2)(list 2 3 4 6 8))
+(check-expect (orderIns 5 lista2)(list 2 4 5 6 8))
+(check-expect (orderIns 7 lista2)(list 2 4 6 7 8))
+(check-expect (orderIns 9 lista2)(list 2 4 6 8 9))
+
 
 ;;PUNTO 10;;
 ;;busca un elemento en una lista desordenada;;
 ;;findn (lista x) -> number
 ;;EJEMPLO: findn (7 lista 1) -> 2
 
-(define lista1 (list 5 3 7 4 1))
+(define lista1.14 (list 5 3 7 4 1))
 
-(define (findn lista x) (findx lista x 0))
+(define (findn1 lista x) (findx1 lista x 0))
 
-(define (findx lista x n)
+(define (findx1 lista x n)
   (cond
     [(empty? lista) (- -1 n)]
     [(< x (first lista)) (- -1 n)]
     [(= x (first lista)) n]
-    [else (findx (rest lista) x(+ n 1))]))
-
-(findn lista1 7)
+    [else (findx1 (rest lista) x(+ n 1))]))
 
 ;;PUNTO 11;;
 ;;Elimina un elemento n de una lista;;
 ;;elimn (n lista) -> lista
 ;;EJEMPLO: elimn (1 lista 1) -> (5 7 4 1)
 
-(define lista1 (list 5 3 7 4 1))
+(define lista1.12 (list 5 3 7 4 1))
 
 (define (elimn n a)
   (cond
@@ -177,22 +204,34 @@ posición en la cual se debería insertar x para mantener la lista ordenada;;
     [(eq? n (first a))(cdr a)]
     [(not(eq? n (first a))) (append (list(first a))(elimn n (cdr a)))]))
 
-(elimn 7 lista1)
+
+;;PRUEBAS;;
+(check-expect (elimn 5 lista1.12)(list 3 7 4 1))
+(check-expect (elimn 3 lista1.12)(list 5 7 4 1))
+(check-expect (elimn 7 lista1.12)(list 5 3 4 1))
+(check-expect (elimn 4 lista1.12)(list 5 3 7 1))
+(check-expect (elimn 1 lista1.12)(list 5 3 7 4))
 
 ;;PUNTO 12;;
-;;busca un elemento en una lista desordenada;;
+;;busca un elemento en una lista ordenada;;
 ;;findn (lista number)-> number;;
 ;;EJEMPLO: findn (lista2 5) -> 4
-(define lista1 (list 5 3 7 4 1))
-(define lista2 (list 1 2 3 4 5))
 
-(define (findn lista x) (findx lista x 0))
+(define lista1.13 (list 1 2 3 4 5))
 
-(define (findx lista x n)
+(define (findn2 lista x) (findx2 lista x 0))
+
+(define (findx2 lista x n)
   (cond
     [(empty? lista) (- 1 n)]
     [(< x (first lista)) (- 1 n)]
     [(= x (first lista)) n]
-    [else (findx (rest lista) x(+ n 1))]))
+    [else (findx2 (rest lista) x(+ n 1))]))
 
-(findn lista2 5)
+;;PRUEBAS;;
+(check-expect (findn lista1.13 1)0)
+(check-expect (findn lista1.13 2)1)
+(check-expect (findn lista1.13 3)2)
+(check-expect (findn lista1.13 4)3)
+(check-expect (findn lista1.13 5)4)
+
