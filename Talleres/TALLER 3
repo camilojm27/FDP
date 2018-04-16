@@ -1,5 +1,11 @@
 ;;TALLER #3;;
 
+;INTEGRANTES:
+;Camilo José Mezú = 1824313-3743
+;Pablo Andrés Marín Rodriguez = 1870116-3743
+;Santiago Martínez Mesa = 1823107-3743
+
+             
 ;;PUNTO 1;;
 ;;Encontrar el mayor valor de una lista de datos;;
 ;;maxVal(lista) -> number
@@ -234,4 +240,3 @@
 (check-expect (findn lista1.13 3)2)
 (check-expect (findn lista1.13 4)3)
 (check-expect (findn lista1.13 5)4)
-
