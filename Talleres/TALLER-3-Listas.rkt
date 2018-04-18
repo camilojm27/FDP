@@ -1,3 +1,6 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-reader.ss" "lang")((modname TALLER-3) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 ;;TALLER #3;;
 
 ;INTEGRANTES:
@@ -12,8 +15,8 @@
 ;;PRUEBAS: (2 5 4 3 0 1) -> 5
 
 (define lista1.1 (list 2 5 4 3 0 1))
-(define lista1.2 (list 2 5 4 3 0 8))
-(define lista1.3 (list 2 5 4 3 0 9))
+(define lista1.2 (list 2 4 4 2 0 9))
+(define lista1.3 (list 1 6 5 4 0 8))
 
 (define (maxVal a)
   (if (empty? (rest a)) (first a)
@@ -21,8 +24,8 @@
 
 ;;PRUEBAS;;
 (check-expect (maxVal lista1.1) 5)
-(check-expect (maxVal lista1.2) 8)
-(check-expect (maxVal lista1.3) 9)
+(check-expect (maxVal lista1.2) 9)
+(check-expect (maxVal lista1.3) 8)
 
 ;;PUNTO 2;;
 ;;Encontrar el mayor promedio de una lista de datos;;
@@ -46,8 +49,8 @@
 
 ;;PRUEBAS;;
 (check-expect (media lista1.1) 2.5)
-(check-expect (media lista1.2) 3.6)
-(check-expect (media lista1.3) 3.83)
+(check-expect (media lista1.2) 3.5)
+(check-expect (media lista1.3) 4)
 
 ;;PUNTO 3;;
 ;;Invierte el orden de una lista;;
@@ -64,8 +67,8 @@
 
 ;;PRUEBAS;;
 (check-expect (invert lista1.1)(list 1 0 3 4 5 2))
-(check-expect (invert lista1.2)(list 8 0 3 4 5 2))
-(check-expect (invert lista1.3)(list 9 0 3 4 5 2))
+(check-expect (invert lista1.2)(list 9 0 2 4 4 2))
+(check-expect (invert lista1.3)(list 8 0 4 5 6 1))
 
 ;PUNTO 4;; 
 ;;Ordena de manera ascendente una lista;;
@@ -188,14 +191,13 @@
 
 (define lista1.14 (list 5 3 7 4 1))
 
-(define (findn1 lista x) (findx1 lista x 0))
+(define (buscar? my-list p n2)
+                 (cond
+                   [(empty? my-list) "No existe"]
+                   [(equal? p (first my-list)) n2]
+                   [else(buscar? (rest my-list) p (+ n2 1))]))
 
-(define (findx1 lista x n)
-  (cond
-    [(empty? lista) (- -1 n)]
-    [(< x (first lista)) (- -1 n)]
-    [(= x (first lista)) n]
-    [else (findx1 (rest lista) x(+ n 1))]))
+(check-expect (buscar? lista1.14 7 0)2)
 
 ;;PUNTO 11;;
 ;;Elimina un elemento n de una lista;;
