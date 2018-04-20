@@ -1,3 +1,6 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-reader.ss" "lang")((modname Taller_Datos_Compuestos) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
 ;;PUNTO 1;;
 ;;CONTRATO;;
 ;;Datos_Persona: (a b c d e f g);;
@@ -67,3 +70,19 @@
 
 (define-struct rects (rec1 rec2 rec3))
 (make-rects rec1 rec2 rec3)
+
+;Punto 8
+(define x (make-point2d 2 3))
+(define y (make-point2d 4 6))
+(define z (make-point2d 1 2))
+
+(define-struct point2 (x y z))
+(make-points x y z)
+
+;Punto 9
+
+(define rec4 (make-rect x y))
+(define rec5 (make-rect z y))
+(define rec6 (make-rect x z))
+
+(make-rects rec4 rec5 rec6)
