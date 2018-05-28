@@ -85,4 +85,20 @@
     [(empty? lista) empty]
     [(equal? 5(cancion-estrellas (first lista)) )(cons (first lista) (5star (rest lista))) ]
     [else (5star (rest lista))]))
-  
+
+;(5star listaCanciones)
+
+;Punto 6
+
+(define (titDur lista)
+  (cond
+    [(empty? lista) empty]
+    [else  (append(list (cancion-nombre (first lista)) (duracion-horas (cancion-duracion (first lista)))
+                        (duracion-minutos (cancion-duracion (first lista)))
+                        (duracion-segundos (cancion-duracion (first lista)))) (titDur(rest lista)))]))
+
+
+;(titDur listaCanciones)
+
+
+;(not (empty? lista))
