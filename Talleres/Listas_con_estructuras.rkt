@@ -65,14 +65,24 @@
 
 ;PUNTO4
 
-(define (2star lista)
+;(define (mayor2 list)
+ ; (if (>= 2 (cancion-estrellas (first list))) (cons (first lista) (2star (rest lista)) "holi"))) 
+
+;(define (2star lista)
+ ; (cond
+  ;  [(empty? lista) empty]
+   ; [(filter mayor2  lista) (cons (first lista) (2star (rest lista)) )]
+    ; ))
+
+;(2star listaCanciones )
+
+
+;Punto 5
+
+
+(define (5star lista)
   (cond
     [(empty? lista) empty]
-    [(> (cancion-estrellas (first lista)) 2) (cons (first lista) (2star (rest lista)) )]
-     ))
-
-
-
-(2star listaCanciones )
-
-
+    [(equal? 5(cancion-estrellas (first lista)) )(cons (first lista) (5star (rest lista))) ]
+    [else (5star (rest lista))]))
+  
