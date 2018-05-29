@@ -7,23 +7,11 @@
 ;;EJEMPLO: (define e1 (make-elemento "aguacates" 1.500 12) -> (make-elemento "aguacates" 1.5 12)
 ;;CUERPO:
 
-
-(define-struct producto (toy cost existencias))
-
-(define p1 (make-producto "hotwheels" 300 200))
-(define p2 (make-producto "trompo" 5 500))
-(define p3 (make-producto "yoyo" 6 300))
-(define p4 (make-producto "nerf" 1000 150))
-(define p5 (make-producto "ps4" 5000 60))
-(define p6 (make-producto "tazos" 9 800))
-
 ;;TERCERA PARTE-PUNTO 2;;
 ;;CONTRATO: (list item item item) -> list
 ;;FUNCION: Define una lista que representa el inventario de la tienda.
 ;;EJEMPLO: (define l1(list aguacates mangos peras manzanas) -> (list "aguacates" "mangos" "peras" "manzanas"))
 ;;CUERPO:
-
-(define inventario (list p1 p2 p3 p4 p5 p6 ))
 
 ;;CUARTA PARTE-PUNTO 1;;
 ;;CONTRATO: (cheapList list) -> list
@@ -48,17 +36,8 @@
 ;;CUARTA PARTE-PUNTO 3;;
 ;;CONTRATO: (enoughUnits item) -> number
 ;;FUNCION:  Verificar si existen suficientes unidades del item con el nombre dado.
-;;EJEMPLO: (enoughUnits aguacate inventario) -> 12 ; si (aguacates 8 12)
+;;EJEMPLO: (enoughUnits aguacate) -> 12 ; si (aguacates 8 12)
 ;;CUERPO:
-
-(define (enoughUnits item lista)
-  (cond
-    [(empty? lista) "No tenemos existencias"]
-    [(equal? item (producto-toy (first lista))) (producto-existencias (first lista))]
-    [else (enoughUnits item (rest lista))]
-    ))
-
-(enoughUnits "yoyo" inventario)
 
 ;;CUARTA PARTE-PUNTO 4;;
 ;;CONTRATO: (suprItem list) -> lista
