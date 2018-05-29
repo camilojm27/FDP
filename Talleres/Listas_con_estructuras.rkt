@@ -198,6 +198,14 @@
 ;;EJEMPLO: (givePrice aguacate) -> 8 ; si (aguacates 8 12)
 ;;CUERPO:
 
+(define (precio n lista)
+  (cond
+    [(empty? lista) false]
+    [(string=? n(producto-toy (first lista)))(producto-cost (first lista))]
+    [else(precio n(rest lista))]))
+
+(precio "nerf" inventario)
+
 ;;CUARTA PARTE-PUNTO 3;;
 ;;CONTRATO: (enoughUnits item) -> number
 ;;FUNCION:  Verificar si existen suficientes unidades del item con el nombre dado.
