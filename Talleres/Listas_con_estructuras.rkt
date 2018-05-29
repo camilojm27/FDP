@@ -1,7 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-advanced-reader.ss" "lang")((modname Listas_con_estructuras) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #t #t none #f () #f)))
-
 ;;PARTE 2 - TALLER LISTAS CON ESTRUCTURAS
 
 ;INTEGRANTES:
@@ -326,12 +325,12 @@
 ;;EJEMPLO: (suprItem lista) -> (list papayas moras peras piñas)
 ;;CUERPO:
 
-;(define (reduce0 lista)
- ; (if (empty? lista) lista
-  ;    (if (= (producto-existencias (first lista)) 0) (append (list (first (rest lista))) (reduce0 (rest lista)))
-   ;       (append (list (first lista))(reduce0 (rest lista))))))
+(define (reduce0 lista)
+  (if (empty? lista) lista
+      (if (= (producto-existencias (first lista)) 0) (append (list (reduce0 (rest lista))) )
+          (append (list (first lista))(reduce0 (rest lista))))))
 
-;(reduce0 inventario)
+(reduce0 inventario)
 
 
 ;--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
